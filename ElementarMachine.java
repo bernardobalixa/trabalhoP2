@@ -1,67 +1,25 @@
-import java.io.Serializable;
+import java.util.ArrayList;
 
-/**
- * Generic class that defines the basic element
- * composed by a number of parameterized things
- */
+public class ElementarMachine<T> {
 
-public class Element<T> implements Serializable {
+    private ArrayList<T> things; 
 
-    // data members
-
-    private int count;
-    private T thing;
-
-    // -----------------------------------------
-    //
-    // Constructors:
-    //
-    // -----------------------------------------
-
-    public Element(int count, T thing) {
-        this.count = count;
-        this.thing = thing;
+    public void addThings(int n, T e) {
+        this.things = new ArrayList<T>(n);
+        this.things.add(e);
     }
 
-    /** 
-     * Returns the number of elements
-     * @return int
-     */
-    public int getCount() {
-        return count;
+    public boolean removeOneThing(T e) {
+        if (this.things.contains(e)) {
+            this.things.remove(e);
+            return true;
+        }
+
+        return false;
     }
 
-    /**
-     * Sets the number of elements
-     * @param count
-     */
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    /**
-     * Returns the parameterized thing
-     * @return T
-     */
-    public T getThing() {
-        return thing;
-    }
-
-    /**
-     * Sets the parameterized thing
-     * @param thing
-     */
-    public void setThing(T thing) {
-        this.thing = thing;
-    }
-
-    /**
-     * @return String
-     */
-    @Override
-    public String toString() {
-        return "Element ["+ getThing().getClass().getSimpleName() + "=" + 
-        thing + ", count = " + getCount() + "]";
+    public void listAll(){
+        System.out.print(this.things.toString());
     }
 
 }

@@ -8,6 +8,7 @@ public class Perishable extends Product implements Freshness{
     
     public Perishable(String name, double cost, String limitDate) throws ParseException{
         super(name, cost);
+        
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
         this.limitDate = dateFormat.parse(limitDate);
     }
